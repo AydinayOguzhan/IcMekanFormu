@@ -15,7 +15,7 @@
 </head>
 
 <script>
-    function save(){
+    function save() {
         var binaId = document.getElementById("binaId").value;
         var altFonksiyon = document.getElementById("altFonksiyon").value;
         var odaNo = document.getElementById("odaNo").value;
@@ -46,6 +46,9 @@
         var isitmaTuru = document.getElementById("isitmaTuru").value;
         var ogrenciKapasitesi = document.getElementById("ogrenciKapasitesi").value;
         var kişiSayisi = document.getElementById("kişiSayisi").value;
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var date = document.getElementById("date").value;
 
         var header1 = document.getElementById("header1").value;
         var input1 = document.getElementById("input1").value;
@@ -72,11 +75,71 @@
         var header12 = document.getElementById("header12").value;
         var input12 = document.getElementById("input12").value;
 
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var date = document.getElementById("date").value;
-
-        
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {
+                binaId:binaId,
+                altFonksiyon:altFonksiyon,
+                odaNo:odaNo,
+                en:en,
+                boy:boy,
+                toplamAlan:toplamAlan,
+                pencereAlani:pencereAlani,
+                pencereTuru:pencereTuru,
+                kaloriferPetek:kaloriferPetek,
+                klima:klima,
+                klimaSayisi:klimaSayisi,
+                isiklandirma:isiklandirma,
+                isiklandirmaTuru:isiklandirmaTuru,
+                cephe:cephe,
+                projeksiyon:projeksiyon,
+                meksisKodu:meksisKodu,
+                mekanAdi:mekanAdi,
+                sorumluKisi:sorumluKisi,
+                yukseklik:yukseklik,
+                hacim:hacim,
+                kati:kati,
+                kitaplik:kitaplik,
+                sandalye:sandalye,
+                bilgisayar:bilgisayar,
+                tahtaSayisi:tahtaSayisi,
+                tahtaTuru:tahtaTuru,
+                masa:masa,
+                isitmaTuru:isitmaTuru,
+                ogrenciKapasitesi:ogrenciKapasitesi,
+                kişiSayisi:kişiSayisi,
+                firstName:firstName,
+                date:date,
+                lastName:lastName,
+                header1:header1,
+                input1:input1,
+                header2:header2,
+                input2:input2,
+                header3:header3,
+                input3:input3,
+                header4:header4,
+                input4:input4,
+                header5:header5,
+                input5:input5,
+                header6:header6,
+                input6:input6,
+                header7:header7,
+                input7:input7,
+                header8:header8,
+                input8:input8,
+                header9:header9,
+                input9:input9,
+                header10:header10,
+                input10:input10,
+                header11:header11,
+                input11:input11,
+                header12:header12,
+                input12:input12,
+            }
+        }).done(function(response) {
+            console.log(response);
+        })
     }
 </script>
 

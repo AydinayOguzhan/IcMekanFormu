@@ -331,6 +331,39 @@ class GirisFormu{
         $this->kisiSayisi = $kisiSayisi;
         return $this;
     }
+
+    private $ad;
+    public function getAd()
+    {
+        return $this->ad;
+    }
+    public function setAd($ad)
+    {
+        $this->ad = $ad;
+        return $this;
+    }
+
+    private $soyad;
+    public function getSoyad()
+    {
+        return $this->soyad;
+    }
+    public function setSoyad($soyad)
+    {
+        $this->soyad = $soyad;
+        return $this;
+    }
+
+    private $tarih;
+    public function getTarih()
+    {
+        return $this->tarih;
+    }
+    public function setTarih($tarih)
+    {
+        $this->tarih = $tarih;
+        return $this;
+    }
 }
 
 ?>
