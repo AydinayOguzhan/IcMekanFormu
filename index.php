@@ -1,3 +1,16 @@
+<?php
+    require_once("/wamp64/www/icMekanFormu/Business/girisFormuManager.php");
+    $girisFormuManager = new GirisFormuManager();
+
+    $pencereTuru = $girisFormuManager->GetPencereTuru();
+    $isiklandirmaTuru = $girisFormuManager->GetIsiklandirmaTuru();
+    $cepheTuru = $girisFormuManager->GetCepheTuru();
+    $tahtaTuru = $girisFormuManager->GetTahtaTuru();
+    $isitmaTuru = $girisFormuManager->GetIsitmaTuru();
+
+    // var_dump($pencereTuru);
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -5,6 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>İç Mekan Giriş Formu</title>
 
     <link href="./style.css" type="text/css" rel="stylesheet">
@@ -16,6 +30,9 @@
 
 <script>
     function save() {
+        var firstNameError = document.getElementById("firstNameError").style.display="none";
+        var lastNameError = document.getElementById("lastNameError").style.display="none";
+
         var binaId = document.getElementById("binaId").value;
         var altFonksiyon = document.getElementById("altFonksiyon").value;
         var odaNo = document.getElementById("odaNo").value;
@@ -26,7 +43,6 @@
         var pencereTuru = document.getElementById("pencereTuru").value;
         var kaloriferPetek = document.getElementById("kaloriferPetek").value;
         var klima = document.getElementById("klima").value;
-        // var klima = document.getElementById("klima").value == "true"? true:false;
         var klimaSayisi = document.getElementById("klimaSayisi").value;
         var isiklandirma = document.getElementById("isiklandirma").value;
         var isiklandirmaTuru = document.getElementById("isiklandirmaTuru").value;
@@ -149,12 +165,13 @@
                     input11: input11,
                     header12: header12,
                     input12: input12,
-                }
-            }).done(function(response) {
-                if (response == '') {
+                },
+            })
+            .done(function(response) {
+                if (response == true) {
                     window.location.reload();
                 }else{
-                    alert(response);
+                    alert("Bir hata oluştu lütfen tekrar deneyin");
                 }
             })
         }
@@ -214,9 +231,9 @@
                         <label for="pencereTuru">Pencere Türü</label>
                         <select class="form-select" id="pencereTuru" aria-label="Pencere Türü">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <?php foreach ($pencereTuru as $key => $value) { ?>
+                            <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
@@ -248,9 +265,9 @@
                         <label for="isiklandirmaTuru">Işıklandırma Türü</label>
                         <select class="form-select" id="isiklandirmaTuru" aria-label="Işıklandırma Türü">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <?php foreach ($isiklandirmaTuru as $key => $value) { ?>
+                            <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
@@ -258,9 +275,10 @@
                         <label for="cephe">Cephesi</label>
                         <select class="form-select" id="cephe" aria-label="Cephesi">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
+                            <?php foreach ($cepheTuru as $key => $value) { ?>
+                            <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
@@ -330,9 +348,10 @@
                         <label for="tahtaTuru">Tahta Türü</label>
                         <select class="form-select" id="tahtaTuru" aria-label="Tahta Türü">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
+                            <?php foreach ($tahtaTuru as $key => $value) { ?>
+                            <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
@@ -345,9 +364,10 @@
                         <label for="isitmaTuru">Isıtma Türü</label>
                         <select class="form-select" id="isitmaTuru" aria-label="Isıtma Türü">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
+                            <?php foreach ($isitmaTuru as $key => $value) { ?>
+                            <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 

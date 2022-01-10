@@ -1,6 +1,7 @@
 <?php
 
-class GirisFormuManager{
+class GirisFormuManager
+{
 
     private $girisFormuDal;
     function __construct()
@@ -12,10 +13,32 @@ class GirisFormuManager{
         $this->girisFormuDal = new GirisFormuDal();
     }
 
-    function Add(GirisFormu $girisFormu, ListeDisi $listeDisi){
-        if ($girisFormu->getAd() == "" ||$girisFormu->getSoyad() == "") {
+    function Add(GirisFormu $girisFormu, ListeDisi $listeDisi)
+    {
+        if ($girisFormu->getAd() == "" || $girisFormu->getSoyad() == "") {
             return Constants::$fillTheBlanks;
         }
         return $this->girisFormuDal->Add($girisFormu, $listeDisi);
+    }
+
+    function GetPencereTuru()
+    {
+        return $this->girisFormuDal->GetPencereTuru();
+    }
+    function GetIsiklandirmaTuru()
+    {
+        return $this->girisFormuDal->GetIsiklandirmaTuru();
+    }
+    function GetCepheTuru()
+    {
+        return $this->girisFormuDal->GetCepheTuru();
+    }
+    function GetTahtaTuru()
+    {
+        return $this->girisFormuDal->GetTahtaTuru();
+    }
+    function GetIsitmaTuru()
+    {
+        return $this->girisFormuDal->GetIsitmaTuru();
     }
 }
