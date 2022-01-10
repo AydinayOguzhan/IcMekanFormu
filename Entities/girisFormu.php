@@ -9,7 +9,7 @@ class GirisFormu{
     }
     public function setBinaId($binaId)
     {
-        $this->binaId = $binaId;
+        $binaId != '' ? $this->binaId = $binaId:$this->binaId = 0;
         return $this;
     }
 
@@ -31,7 +31,7 @@ class GirisFormu{
     }
     public function setOdaNo($odaNo)
     {
-        $this->odaNo = $odaNo;
+        $odaNo != '' ? $this->odaNo = $odaNo:$this->odaNo = 0;
         return $this;
     }
 
@@ -42,7 +42,7 @@ class GirisFormu{
     }
     public function setEn($en)
     {
-        $this->en = $en;
+        $en != '' ? $this->en = $en:$this->en = 0;
         return $this;
     }
 
@@ -53,7 +53,7 @@ class GirisFormu{
     }
     public function setBoy($boy)
     {
-        $this->boy = $boy;
+        $boy != '' ? $this->boy = $boy:$this->boy = 0;
         return $this;
     }
 
@@ -64,7 +64,7 @@ class GirisFormu{
     }
     public function setToplamAlan($toplamAlan)
     {
-        $this->toplamAlan = $toplamAlan;
+        $toplamAlan != '' ? $this->toplamAlan = $toplamAlan:$this->toplamAlan = 0;
         return $this;
     }
 
@@ -75,7 +75,7 @@ class GirisFormu{
     }
     public function setPencereAlani($pencereAlani)
     {
-        $this->pencereAlani = $pencereAlani;
+        $pencereAlani != '' ? $this->pencereAlani = $pencereAlani:$this->pencereAlani = 0;
         return $this;
     }
 
@@ -97,7 +97,7 @@ class GirisFormu{
     }
     public function setKaloriferPetek($kaloriferPetek)
     {
-        $this->kaloriferPetek = $kaloriferPetek;
+        $kaloriferPetek != '' ? $this->kaloriferPetek = $kaloriferPetek:$this->kaloriferPetek = 0;
         return $this;
     }
 
@@ -108,7 +108,7 @@ class GirisFormu{
     }
     public function setKlima($klima)
     {
-        $this->klima = $klima;
+        $klima == "true"?$this->klima = 1:$this->klima = 0;
         return $this;
     }
 
@@ -119,7 +119,7 @@ class GirisFormu{
     }
     public function setKlimaSayisi($klimaSayisi)
     {
-        $this->klimaSayisi = $klimaSayisi;
+        $klimaSayisi != '' ? $this->klimaSayisi = $klimaSayisi:$this->klimaSayisi = 0;
         return $this;
     }
 
@@ -130,7 +130,7 @@ class GirisFormu{
     }
     public function setIsiklandirma($isiklandirma)
     {
-        $this->isiklandirma = $isiklandirma;
+        $isiklandirma != '' ? $this->isiklandirma = $isiklandirma:$this->isiklandirma = 0;
         return $this;
     }
 
@@ -163,7 +163,7 @@ class GirisFormu{
     } 
     public function setProjeksiyon($projeksiyon)
     {
-        $this->projeksiyon = $projeksiyon;
+        $projeksiyon != '' ? $this->projeksiyon = $projeksiyon:$this->projeksiyon = 0;
         return $this;
     }
 
@@ -207,7 +207,7 @@ class GirisFormu{
     }
     public function setYukseklik($yukseklik)
     {
-        $this->yukseklik = $yukseklik;
+        $yukseklik != '' ? $this->yukseklik = $yukseklik:$this->yukseklik = 0;
         return $this;
     }
 
@@ -218,7 +218,7 @@ class GirisFormu{
     }
     public function setHacim($hacim)
     {
-        $this->hacim = $hacim;
+        $hacim != '' ? $this->hacim = $hacim:$this->hacim = 0;
         return $this;
     }
 
@@ -229,7 +229,7 @@ class GirisFormu{
     }
     public function setKati($kati)
     {
-        $this->kati = $kati;
+        $kati != '' ? $this->kati = $kati:$this->kati = 0;
         return $this;
     }
 
@@ -240,7 +240,7 @@ class GirisFormu{
     }
     public function setKitaplik($kitaplik)
     {
-        $this->kitaplik = $kitaplik;
+        $kitaplik != '' ? $this->kitaplik = $kitaplik:$this->kitaplik = 0;
         return $this;
     }
 
@@ -251,7 +251,7 @@ class GirisFormu{
     }
     public function setSandalye($sandalye)
     {
-        $this->sandalye = $sandalye;
+        $sandalye != '' ? $this->sandalye = $sandalye:$this->sandalye = 0;
         return $this;
     }
 
@@ -262,7 +262,7 @@ class GirisFormu{
     }
     public function setBilgisayar($bilgisayar)
     {
-        $this->bilgisayar = $bilgisayar;
+        $bilgisayar != '' ? $this->bilgisayar = $bilgisayar:$this->bilgisayar = 0;
         return $this;
     }
 
@@ -273,7 +273,7 @@ class GirisFormu{
     }
     public function setTahtaSayisi($tahtaSayisi)
     {
-        $this->tahtaSayisi = $tahtaSayisi;
+        $tahtaSayisi != '' ? $this->tahtaSayisi = $tahtaSayisi:$this->tahtaSayisi = 0;
         return $this;
     }
 
@@ -295,7 +295,7 @@ class GirisFormu{
     }
     public function setMasa($masa)
     {
-        $this->masa = $masa;
+        $masa != '' ? $this->masa = $masa:$this->masa = 0;
         return $this;
     }
 
@@ -317,7 +317,7 @@ class GirisFormu{
     }
     public function setOgrenciKapasitesi($ogrenciKapasitesi)
     {
-        $this->ogrenciKapasitesi = $ogrenciKapasitesi;
+        $ogrenciKapasitesi != '' ? $this->ogrenciKapasitesi = $ogrenciKapasitesi:$this->ogrenciKapasitesi = 0;
         return $this;
     }
 
@@ -328,7 +328,7 @@ class GirisFormu{
     }
     public function setKisiSayisi($kisiSayisi)
     {
-        $this->kisiSayisi = $kisiSayisi;
+        $kisiSayisi != '' ? $this->kisiSayisi = $kisiSayisi:$this->kisiSayisi = 0;
         return $this;
     }
 

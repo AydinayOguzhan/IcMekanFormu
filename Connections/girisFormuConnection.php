@@ -3,11 +3,14 @@
 $method = $_SERVER["REQUEST_METHOD"];
 require_once("/wamp64/www/icMekanFormu/Entities/girisFormu.php");
 require_once("/wamp64/www/icMekanFormu/Entities/listeDisi.php");
+require_once("/wamp64/www/icMekanFormu/Business/girisFormuManager.php");
 
 switch ($method) {
     case 'POST':
         $girisFormu = new GirisFormu();
         $listeDisi = new ListeDisi();
+        $girisFormuManager = new GirisFormuManager();
+
         parse_str(file_get_contents("php://input"),$putVars);
         $girisFormu->setBinaId($putVars["binaId"]);
         $girisFormu->setAltFonksiyon($putVars["altFonksiyon"]);
@@ -67,7 +70,8 @@ switch ($method) {
         $listeDisi->setInput11($putVars["input11"]);
         $listeDisi->setHeader12($putVars["header12"]);
         $listeDisi->setInput12($putVars["input12"]);
-        echo 1;
+
+        echo $girisFormuManager->Add($girisFormu,$listeDisi);
         break;
     case 'PUT':
         echo 2;

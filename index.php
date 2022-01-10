@@ -26,6 +26,7 @@
         var pencereTuru = document.getElementById("pencereTuru").value;
         var kaloriferPetek = document.getElementById("kaloriferPetek").value;
         var klima = document.getElementById("klima").value;
+        // var klima = document.getElementById("klima").value == "true"? true:false;
         var klimaSayisi = document.getElementById("klimaSayisi").value;
         var isiklandirma = document.getElementById("isiklandirma").value;
         var isiklandirmaTuru = document.getElementById("isiklandirmaTuru").value;
@@ -45,10 +46,10 @@
         var masa = document.getElementById("masa").value;
         var isitmaTuru = document.getElementById("isitmaTuru").value;
         var ogrenciKapasitesi = document.getElementById("ogrenciKapasitesi").value;
-        var kişiSayisi = document.getElementById("kişiSayisi").value;
+        var kisiSayisi = document.getElementById("kisiSayisi").value;
         var firstName = document.getElementById("firstName").value;
         var lastName = document.getElementById("lastName").value;
-        var date = document.getElementById("date").value;
+        var date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
         var header1 = document.getElementById("header1").value;
         var input1 = document.getElementById("input1").value;
@@ -75,71 +76,88 @@
         var header12 = document.getElementById("header12").value;
         var input12 = document.getElementById("input12").value;
 
-        $.ajax({
-            type: "POST",
-            url: "",
-            data: {
-                binaId:binaId,
-                altFonksiyon:altFonksiyon,
-                odaNo:odaNo,
-                en:en,
-                boy:boy,
-                toplamAlan:toplamAlan,
-                pencereAlani:pencereAlani,
-                pencereTuru:pencereTuru,
-                kaloriferPetek:kaloriferPetek,
-                klima:klima,
-                klimaSayisi:klimaSayisi,
-                isiklandirma:isiklandirma,
-                isiklandirmaTuru:isiklandirmaTuru,
-                cephe:cephe,
-                projeksiyon:projeksiyon,
-                meksisKodu:meksisKodu,
-                mekanAdi:mekanAdi,
-                sorumluKisi:sorumluKisi,
-                yukseklik:yukseklik,
-                hacim:hacim,
-                kati:kati,
-                kitaplik:kitaplik,
-                sandalye:sandalye,
-                bilgisayar:bilgisayar,
-                tahtaSayisi:tahtaSayisi,
-                tahtaTuru:tahtaTuru,
-                masa:masa,
-                isitmaTuru:isitmaTuru,
-                ogrenciKapasitesi:ogrenciKapasitesi,
-                kişiSayisi:kişiSayisi,
-                firstName:firstName,
-                date:date,
-                lastName:lastName,
-                header1:header1,
-                input1:input1,
-                header2:header2,
-                input2:input2,
-                header3:header3,
-                input3:input3,
-                header4:header4,
-                input4:input4,
-                header5:header5,
-                input5:input5,
-                header6:header6,
-                input6:input6,
-                header7:header7,
-                input7:input7,
-                header8:header8,
-                input8:input8,
-                header9:header9,
-                input9:input9,
-                header10:header10,
-                input10:input10,
-                header11:header11,
-                input11:input11,
-                header12:header12,
-                input12:input12,
-            }
-        }).done(function(response) {
-            console.log(response);
-        })
+        var url = "Connections/girisFormuConnection.php";
+
+        if (firstName == "" ) {
+            var firstNameError = document.getElementById("firstNameError");
+            firstNameError.style.display = "block";
+            firstNameError.innerHTML = "Lütfen bu alanı boş bırakmayınız"
+        } else if(lastName == ""){
+            var firstNameError = document.getElementById("firstNameError").style.display="none";
+            var lastNameError = document.getElementById("lastNameError");
+            lastNameError.style.display = "block";
+            lastNameError.innerHTML = "Lütfen bu alanı boş bırakmayınız"
+        }else {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    binaId: binaId,
+                    altFonksiyon: altFonksiyon,
+                    odaNo: odaNo,
+                    en: en,
+                    boy: boy,
+                    toplamAlan: toplamAlan,
+                    pencereAlani: pencereAlani,
+                    pencereTuru: pencereTuru,
+                    kaloriferPetek: kaloriferPetek,
+                    klima: klima,
+                    klimaSayisi: klimaSayisi,
+                    isiklandirma: isiklandirma,
+                    isiklandirmaTuru: isiklandirmaTuru,
+                    cephe: cephe,
+                    projeksiyon: projeksiyon,
+                    meksisKodu: meksisKodu,
+                    mekanAdi: mekanAdi,
+                    sorumluKisi: sorumluKisi,
+                    yukseklik: yukseklik,
+                    hacim: hacim,
+                    kati: kati,
+                    kitaplik: kitaplik,
+                    sandalye: sandalye,
+                    bilgisayar: bilgisayar,
+                    tahtaSayisi: tahtaSayisi,
+                    tahtaTuru: tahtaTuru,
+                    masa: masa,
+                    isitmaTuru: isitmaTuru,
+                    ogrenciKapasitesi: ogrenciKapasitesi,
+                    kisiSayisi: kisiSayisi,
+                    firstName: firstName,
+                    date: date,
+                    lastName: lastName,
+                    header1: header1,
+                    input1: input1,
+                    header2: header2,
+                    input2: input2,
+                    header3: header3,
+                    input3: input3,
+                    header4: header4,
+                    input4: input4,
+                    header5: header5,
+                    input5: input5,
+                    header6: header6,
+                    input6: input6,
+                    header7: header7,
+                    input7: input7,
+                    header8: header8,
+                    input8: input8,
+                    header9: header9,
+                    input9: input9,
+                    header10: header10,
+                    input10: input10,
+                    header11: header11,
+                    input11: input11,
+                    header12: header12,
+                    input12: input12,
+                }
+            }).done(function(response) {
+                if (response == '') {
+                    window.location.reload();
+                }else{
+                    alert(response);
+                }
+            })
+        }
     }
 </script>
 
@@ -195,7 +213,7 @@
                     <div class="mb-3">
                         <label for="pencereTuru">Pencere Türü</label>
                         <select class="form-select" id="pencereTuru" aria-label="Pencere Türü">
-                            <option selected>Lütfen seçim yapınız</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -210,9 +228,9 @@
                     <div class="mb-3">
                         <label for="klima">Klima (Var/Yok)</label>
                         <select class="form-select" id="klima" aria-label="Klima">
-                            <option selected>Lütfen seçim yapınız</option>
-                            <option value="1">Var</option>
-                            <option value="0">Yok</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
+                            <option value="true">Var</option>
+                            <option value="false">Yok</option>
                         </select>
                     </div>
 
@@ -229,7 +247,7 @@
                     <div class="mb-3">
                         <label for="isiklandirmaTuru">Işıklandırma Türü</label>
                         <select class="form-select" id="isiklandirmaTuru" aria-label="Işıklandırma Türü">
-                            <option selected>Lütfen seçim yapınız</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -239,7 +257,7 @@
                     <div class="mb-3">
                         <label for="cephe">Cephesi</label>
                         <select class="form-select" id="cephe" aria-label="Cephesi">
-                            <option selected>Lütfen seçim yapınız</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -311,7 +329,7 @@
                     <div class="mb-3">
                         <label for="tahtaTuru">Tahta Türü</label>
                         <select class="form-select" id="tahtaTuru" aria-label="Tahta Türü">
-                            <option selected>Lütfen seçim yapınız</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -326,7 +344,7 @@
                     <div class="mb-3">
                         <label for="isitmaTuru">Isıtma Türü</label>
                         <select class="form-select" id="isitmaTuru" aria-label="Isıtma Türü">
-                            <option selected>Lütfen seçim yapınız</option>
+                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -339,7 +357,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input class="form-control" placeholder="Kişi Sayısı" type="number" id="kişiSayisi">
+                        <input class="form-control" placeholder="Kişi Sayısı" type="number" id="kisiSayisi">
                         <label class="form-label" for="kişiSayisi">Kişi Sayısı</label>
                     </div>
 
@@ -498,10 +516,13 @@
                             <input class="form-control" placeholder="İsim" type="text" id="firstName">
                             <label class="form-label" for="firstName">İsim</label>
                         </div>
+                        <label class="errorMessage" id="firstNameError"></label>
+
                         <div class="form-floating mb-3">
                             <input class="form-control" placeholder="Soy İsim" type="text" id="lastName">
                             <label class="form-label" for="lastName">Soy İsim</label>
                         </div>
+                        <label class="errorMessage" id="lastNameError"></label>
                     </div>
 
                     <div>
