@@ -9,7 +9,7 @@ class GirisFormuDal
         require_once("/wamp64/www/icMekanFormu/Entities/listeDisi.php");
     }
 
-    function Add(GirisFormu $girisFormu, ListeDisi $listeDisi)
+    function Add(GirisFormu $girisFormu)
     {
         require_once("/wamp64/www/icMekanFormu/DataAccess/connection.php");
         if ($girisFormuCon) {
@@ -26,6 +26,25 @@ class GirisFormuDal
             '" . $girisFormu->getSandalye() . "','" . $girisFormu->getBilgisayar() . "','" . $girisFormu->getTahtaSayisi() . "','" . $girisFormu->getMasa() . "',
             '" . $girisFormu->getOgrenciKapasitesi() . "','" . $girisFormu->getKisiSayisi() . "','" . $girisFormu->getAd() . "','" . $girisFormu->getSoyad() . "',
             '" . $girisFormu->getTarih() . "')");
+
+            if ($query == true) {
+                $lastId = $girisFormuCon->insert_id;
+                mysqli_close($girisFormuCon);
+                return $lastId;
+            }
+            mysqli_close($girisFormuCon);
+            return $girisFormuCon->error;
+        } else {
+            Constants::$connectionError;
+        }
+    }
+
+    function AddListeDisi(int $formId ,ListeDisi $listeDisi){
+        require("/wamp64/www/icMekanFormu/DataAccess/connection.php");
+        if ($girisFormuCon) {
+            $query = mysqli_query($girisFormuCon, "INSERT INTO `liste_disi`(`ic_mekan_formu_id`, `baslik`, `icerik`) 
+            VALUES ('".$formId."','".$listeDisi->getHeader()."','".$listeDisi->getInput()."')");
+
             mysqli_close($girisFormuCon);
             if ($query == true) {
                 return true;

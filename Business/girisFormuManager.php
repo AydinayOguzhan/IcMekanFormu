@@ -13,12 +13,21 @@ class GirisFormuManager
         $this->girisFormuDal = new GirisFormuDal();
     }
 
-    function Add(GirisFormu $girisFormu, ListeDisi $listeDisi)
+    function Add(GirisFormu $girisFormu)
     {
         if ($girisFormu->getAd() == "" || $girisFormu->getSoyad() == "") {
             return Constants::$fillTheBlanks;
         }
-        return $this->girisFormuDal->Add($girisFormu, $listeDisi);
+        
+        return $this->girisFormuDal->Add($girisFormu);
+    }
+
+    function AddListeDisi(int $formId, ListeDisi ...$listeDisi){
+        for ($i=0; $i < count($listeDisi); $i++) { 
+            if ($listeDisi[$i]->getHeader() != "" || $listeDisi[$i]->getInput() != "") {
+                $this->girisFormuDal->AddListeDisi($formId,$listeDisi[$i]);   
+            }
+        }
     }
 
     function GetPencereTuru()

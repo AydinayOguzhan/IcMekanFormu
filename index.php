@@ -7,8 +7,6 @@
     $cepheTuru = $girisFormuManager->GetCepheTuru();
     $tahtaTuru = $girisFormuManager->GetTahtaTuru();
     $isitmaTuru = $girisFormuManager->GetIsitmaTuru();
-
-    // var_dump($pencereTuru);
 ?>
 
 <!DOCTYPE html>
@@ -173,6 +171,7 @@
                 }else{
                     alert("Bir hata oluştu lütfen tekrar deneyin");
                 }
+                console.log(response);
             })
         }
     }
@@ -275,7 +274,6 @@
                         <label for="cephe">Cephesi</label>
                         <select class="form-select" id="cephe" aria-label="Cephesi">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <?php foreach ($cepheTuru as $key => $value) { ?>
                             <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
                             <?php } ?>
@@ -348,7 +346,6 @@
                         <label for="tahtaTuru">Tahta Türü</label>
                         <select class="form-select" id="tahtaTuru" aria-label="Tahta Türü">
                             <option value="0" selected>Lütfen seçim yapınız</option>
-                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <?php foreach ($tahtaTuru as $key => $value) { ?>
                             <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
                             <?php } ?>
@@ -363,7 +360,6 @@
                     <div class="mb-3">
                         <label for="isitmaTuru">Isıtma Türü</label>
                         <select class="form-select" id="isitmaTuru" aria-label="Isıtma Türü">
-                            <option value="0" selected>Lütfen seçim yapınız</option>
                             <option value="0" selected>Lütfen seçim yapınız</option>
                             <?php foreach ($isitmaTuru as $key => $value) { ?>
                             <option value="<?php echo $value["id"] ?>"><?php echo $value["tur"]; ?></option>
@@ -543,13 +539,6 @@
                             <label class="form-label" for="lastName">Soy İsim</label>
                         </div>
                         <label class="errorMessage" id="lastNameError"></label>
-                    </div>
-
-                    <div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" placeholder="Tarih" type="date" id="date">
-                            <label class="form-label" for="date">Tarih</label>
-                        </div>
                     </div>
 
                     <div class="d-grid gap-2">
